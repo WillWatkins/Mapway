@@ -15,7 +15,6 @@
 		CDBF0B212366EA5700FD59AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDBF0B1F2366EA5700FD59AB /* LaunchScreen.storyboard */; };
 		CDBF0B2C2366EA5700FD59AB /* MapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBF0B2B2366EA5700FD59AB /* MapsTests.swift */; };
 		CDBF0B372366EA5700FD59AB /* MapsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBF0B362366EA5700FD59AB /* MapsUITests.swift */; };
-		CDBF0B472368379F00FD59AB /* PlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBF0B462368379F00FD59AB /* PlacesModel.swift */; };
 		D47BDA54B2BF83948CF9577F /* Pods_Maps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A296D78766538522C46CB483 /* Pods_Maps.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +53,6 @@
 		CDBF0B322366EA5700FD59AB /* MapsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBF0B362366EA5700FD59AB /* MapsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsUITests.swift; sourceTree = "<group>"; };
 		CDBF0B382366EA5700FD59AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CDBF0B462368379F00FD59AB /* PlacesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +126,6 @@
 				CDBF0B142366EA5500FD59AB /* AppDelegate.swift */,
 				CDBF0B162366EA5500FD59AB /* SceneDelegate.swift */,
 				CDBF0B182366EA5500FD59AB /* ViewController.swift */,
-				CDBF0B462368379F00FD59AB /* PlacesModel.swift */,
 				CDBF0B1A2366EA5500FD59AB /* Main.storyboard */,
 				CDBF0B1D2366EA5700FD59AB /* Assets.xcassets */,
 				CDBF0B1F2366EA5700FD59AB /* LaunchScreen.storyboard */,
@@ -331,7 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBF0B192366EA5500FD59AB /* ViewController.swift in Sources */,
-				CDBF0B472368379F00FD59AB /* PlacesModel.swift in Sources */,
 				CDBF0B152366EA5500FD59AB /* AppDelegate.swift in Sources */,
 				CDBF0B172366EA5500FD59AB /* SceneDelegate.swift in Sources */,
 			);

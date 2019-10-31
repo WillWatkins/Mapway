@@ -36,9 +36,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     struct Location: Decodable {
         var lat: String
         var lng: String
+        
     }
-    
-    
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
@@ -62,15 +61,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.showsCompass = true
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
+        mapView.showsCompass = true
         
         if let coor = mapView.userLocation.location?.coordinate {
             mapView.setCenter(coor, animated: true)
-            
-            //        fetchData { (dict, error) in
-            //            debugPrint(dict)
-            //        }
+            mapView.showsUserLocation = true
         }
     }
+    
+    
+    
+    
     //MARK: - Location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocationCoordinate2D = manager.location!.coordinate
@@ -80,16 +81,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = "Current Location"
-        mapView.addAnnotation(annotation)
         locationManager.stopUpdatingLocation()
         //print("lng= \(location.longitude) & lat= \(location.latitude)")
         
         latitude = String(location.latitude)
         longitude = String(location.longitude)
-        
         
     }
     
@@ -101,6 +97,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func mapView(_ mapView: MKMapView, didFailToLocateUserWithError error: Error) {
         print("Unable to determine location, error: \(error)")
     }
+    
+    
+    
+    
     
     //MARK: - JSON decoder
     func performRequest(url: String){
@@ -114,6 +114,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 let decoder = JSONDecoder()
                 let places = try decoder.decode(PlacesData.self, from: data)
                 print(places.response.places[0].location)
+                for each in places.response.places {
+                    let mapAnnotation = MKPointAnnotation()
+                    mapAnnotation.coordinate = CLLocationCoordinate2D(latitude: Double(each.location.lat)!, longitude: Double(each.location.lng)!)
+                    mapAnnotation.title = each.name
+                    DispatchQueue.main.async {
+                        self.mapView.addAnnotation(mapAnnotation)
+                    }
+                }
             } catch let error{
                 print("error serialising json, the error is: ", error)
             }
@@ -123,8 +131,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         .resume()
     }
 }
-
-
 
 //MARK: - TextFieldDelegate
 extension ViewController: UITextFieldDelegate {
