@@ -42,6 +42,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBAction func refreshButton(_ sender: UIButton) {
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+    }
+    
+    
     var locationManager = CLLocationManager()
     
     override func viewDidLoad() {

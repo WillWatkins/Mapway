@@ -23,15 +23,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6TK-dC-83B">
+                                <rect key="frame" x="364" y="47" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PmJ-3g-whS"/>
+                                    <constraint firstAttribute="width" constant="30" id="W4l-KU-k7F"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" backgroundImage="arrow.clockwise" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mme-zc-quu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="OYe-PR-rRx" firstAttribute="centerX" secondItem="Eiw-Sk-bKQ" secondAttribute="centerX" id="18w-pO-yjZ"/>
                             <constraint firstItem="OYe-PR-rRx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="61" id="1qr-JY-i9v"/>
                             <constraint firstItem="Eiw-Sk-bKQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AeV-3u-UJv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6TK-dC-83B" secondAttribute="bottom" constant="784" id="BU0-aO-QBP"/>
+                            <constraint firstItem="6TK-dC-83B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="IOy-Sn-OWs"/>
                             <constraint firstItem="Eiw-Sk-bKQ" firstAttribute="top" secondItem="OYe-PR-rRx" secondAttribute="top" id="LE8-px-4TY"/>
                             <constraint firstItem="Eiw-Sk-bKQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N55-G3-rGX"/>
                             <constraint firstItem="OYe-PR-rRx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TtQ-26-AXh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6TK-dC-83B" secondAttribute="trailing" constant="20" id="byF-FN-S3v"/>
+                            <constraint firstItem="6TK-dC-83B" firstAttribute="leading" secondItem="OYe-PR-rRx" secondAttribute="trailing" constant="11" id="cPv-av-sqF"/>
                             <constraint firstItem="Eiw-Sk-bKQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ozH-hz-fTu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -43,7 +61,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-841" y="-295"/>
+            <point key="canvasLocation" x="-842.02898550724649" y="-295.3125"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
+    </resources>
 </document>
