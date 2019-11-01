@@ -18,8 +18,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var longitude = String()
     
     //MARK: - structs
-    
-    //Cannot get past 'response'
     struct PlacesData:Decodable {
         var response: Response
     }
@@ -36,18 +34,51 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     struct Location: Decodable {
         var lat: String
         var lng: String
-        
     }
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var scSegment: UISegmentedControl!
+    @IBOutlet weak var trafficSwitch: UISwitch!
+    @IBOutlet weak var trafficView: UIView!
+    @IBOutlet weak var trafficTextLabel: UITextField!
     
     @IBAction func refreshButton(_ sender: UIButton) {
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
     }
     
+    @IBAction func myLocation(_ sender: Any) {
+        if let coor = mapView.userLocation.location?.coordinate {
+            mapView.setCenter(coor, animated: true)
+            mapView.showsUserLocation = true
+        }
+    }
+
+    @IBAction func scSegmentTapped(_ sender: Any) {
+        let getIndex = scSegment.selectedSegmentIndex
+        print(getIndex)
+        
+        switch (getIndex) {
+        case 0: self.mapView.mapType = .standard
+            
+        case 1: self.mapView.mapType = .hybrid
+            
+        default:
+            print("No maptype currently selected")
+        }
+    }
+
+    @IBAction func trafficSwitchChanges(_ sender: Any) {
+        if trafficSwitch.isOn {
+            mapView.showsTraffic = true
+        } else {
+            mapView.showsTraffic = false
+        }
+    }
     
+ 
+    //MARK: - Getting use location
     var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -55,6 +86,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         // Do any additional setup after loading the view.
         searchTextField.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        //trafficView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        trafficView.layer.cornerRadius = 10
+        trafficTextLabel.layer.borderWidth = 0
+
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -68,17 +103,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
         mapView.showsCompass = true
-        
+               
         if let coor = mapView.userLocation.location?.coordinate {
             mapView.setCenter(coor, animated: true)
             mapView.showsUserLocation = true
         }
     }
     
-    
-    
-    
-    //MARK: - Location
+    //MARK: - Map
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocationCoordinate2D = manager.location!.coordinate
         
@@ -124,6 +156,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     let mapAnnotation = MKPointAnnotation()
                     mapAnnotation.coordinate = CLLocationCoordinate2D(latitude: Double(each.location.lat)!, longitude: Double(each.location.lng)!)
                     mapAnnotation.title = each.name
+                    
                     DispatchQueue.main.async {
                         self.mapView.addAnnotation(mapAnnotation)
                     }
@@ -148,7 +181,6 @@ extension ViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         print(searchTextField.text!)
         if let keyword = searchTextField.text {
             let finalURL = "https://mps.mxdata.co.uk/request/execute/?cid=rootle:1&rid=ksearch&p=what:\(keyword);lat:\(latitude);lng:\(longitude);maxresults:20;skipcount:0"
@@ -172,6 +204,5 @@ extension ViewController: UITextFieldDelegate {
         textField.placeholder = "Search"
     }
 }
-
 
 
