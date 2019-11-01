@@ -67,7 +67,7 @@
                                     <action selector="myLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pzE-pC-ydz"/>
                                 </connections>
                             </button>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Li7-XV-ZyJ">
+                            <view opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Li7-XV-ZyJ">
                                 <rect key="frame" x="233" y="789" width="115" height="34"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sGg-Bd-yvt">
@@ -91,6 +91,18 @@
                                     <constraint firstAttribute="height" constant="34" id="vfm-62-fL5"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUy-CQ-P6N">
+                                <rect key="frame" x="18" y="84.5" width="35" height="36.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="ee8-ec-L2e"/>
+                                    <constraint firstAttribute="height" constant="37.5" id="vxH-ST-Kbh"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" backgroundImage="arrow.right.arrow.left.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="removeRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i7J-su-fsz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -98,13 +110,16 @@
                             <constraint firstItem="Eiw-Sk-bKQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3lc-p0-Osd"/>
                             <constraint firstItem="Rer-jX-cFy" firstAttribute="top" secondItem="Li7-XV-ZyJ" secondAttribute="bottom" constant="8" id="5fd-5K-NtA"/>
                             <constraint firstItem="6TK-dC-83B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="7Fq-dt-U30"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uUy-CQ-P6N" secondAttribute="trailing" constant="361" id="7fo-Eu-YaD"/>
                             <constraint firstItem="OYe-PR-rRx" firstAttribute="leading" secondItem="6TK-dC-83B" secondAttribute="trailing" constant="11" id="8QG-Mo-joX"/>
                             <constraint firstItem="Eiw-Sk-bKQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8b8-P2-BwL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rLa-Sn-nkA" secondAttribute="bottom" constant="35.5" id="AS4-FW-MmU"/>
+                            <constraint firstItem="rLa-Sn-nkA" firstAttribute="top" secondItem="uUy-CQ-P6N" secondAttribute="bottom" constant="675.5" id="CBL-0X-aVf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Li7-XV-ZyJ" secondAttribute="trailing" constant="66" id="FhZ-OU-xFu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6TK-dC-83B" secondAttribute="bottom" constant="786" id="KO6-3D-XUT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OYe-PR-rRx" secondAttribute="bottom" constant="784" id="PEU-Gx-0nY"/>
                             <constraint firstItem="6TK-dC-83B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Qq3-Sh-rQ7"/>
+                            <constraint firstItem="uUy-CQ-P6N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="Yro-Zo-ada"/>
                             <constraint firstItem="OYe-PR-rRx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZI9-Dg-n9J"/>
                             <constraint firstItem="Rer-jX-cFy" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ZfN-rB-gjB"/>
                             <constraint firstItem="Li7-XV-ZyJ" firstAttribute="top" secondItem="OYe-PR-rRx" secondAttribute="bottom" constant="711" id="b9N-go-Y4s"/>
@@ -112,6 +127,7 @@
                             <constraint firstAttribute="bottom" secondItem="Eiw-Sk-bKQ" secondAttribute="bottom" id="k5O-hR-ELz"/>
                             <constraint firstItem="rLa-Sn-nkA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kAN-uL-f3T"/>
                             <constraint firstItem="OYe-PR-rRx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="61" id="nLw-cq-hv9"/>
+                            <constraint firstItem="uUy-CQ-P6N" firstAttribute="top" secondItem="6TK-dC-83B" secondAttribute="bottom" constant="8" id="oEo-OO-WS4"/>
                             <constraint firstItem="rLa-Sn-nkA" firstAttribute="top" secondItem="6TK-dC-83B" secondAttribute="bottom" constant="721" id="rGY-0E-f7Q"/>
                             <constraint firstItem="Eiw-Sk-bKQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rUU-zK-2nG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rer-jX-cFy" secondAttribute="trailing" constant="66" id="t8w-aD-uj7"/>
@@ -136,6 +152,7 @@
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
+        <image name="arrow.right.arrow.left.circle" catalog="system" width="64" height="60"/>
         <image name="mappin.and.ellipse" catalog="system" width="58" height="64"/>
     </resources>
 </document>

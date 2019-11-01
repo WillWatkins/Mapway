@@ -46,6 +46,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func refreshButton(_ sender: UIButton) {
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
+        self.mapView.removeOverlays(self.mapView.overlays)
+    }
+    
+    @IBAction func removeRoute(_ sender: Any) {
+        self.mapView.removeOverlays(self.mapView.overlays)
     }
     
     @IBAction func myLocation(_ sender: Any) {
@@ -61,7 +66,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         switch (getIndex) {
         case 0: self.mapView.mapType = .standard
-            
         case 1: self.mapView.mapType = .hybrid
             
         default:
@@ -77,8 +81,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
- 
-    //MARK: - Getting use location
+       
+    //MARK: - Getting user location
     var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -89,8 +93,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //trafficView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         trafficView.layer.cornerRadius = 10
         trafficTextLabel.layer.borderWidth = 0
-
-        
+       
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -124,10 +127,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         latitude = String(location.latitude)
         longitude = String(location.longitude)
-        
     }
-    
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
@@ -136,10 +137,62 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         print("Unable to determine location, error: \(error)")
     }
     
+//MARK: - Directions to selected pin
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+       let sourceLocation = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longitude)!)
+        
+        let destinationLocation = view.annotation?.coordinate
+        
+        let sourcePlacemark = MKPlacemark(coordinate: sourceLocation)
+        let destinationPlacemark = MKPlacemark(coordinate: destinationLocation!)
+        
+        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+        
+        let sourceAnnotation = MKPointAnnotation()
+        if let location = sourcePlacemark.location {
+            sourceAnnotation.coordinate = location.coordinate
+        }
+        
+        let destinationAnnotation = MKPointAnnotation()
+        if let location = destinationPlacemark.location {
+            destinationAnnotation.coordinate = location.coordinate
+        }
+        
+        self.mapView.showAnnotations([sourceAnnotation, destinationAnnotation], animated: true)
+        
+        let directionRequest = MKDirections.Request()
+        directionRequest.source = sourceMapItem
+        directionRequest.destination = destinationMapItem
+        directionRequest.transportType = .walking
+        
+        let directions = MKDirections(request: directionRequest)
+        
+        directions.calculate { (response, error) in
+            guard let response = response else {
+                if error != nil {
+                    print("Error \(error)")
+                }
+                return
+            }
+            let route = response.routes[0]
+            
+            self.mapView.addOverlay(route.polyline, level: .aboveRoads)
+            
+            let rect = route.polyline.boundingMapRect
+            self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+        }
+    }
     
-    
-    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        
+        renderer.strokeColor = .blue
+        renderer.lineWidth = 5.0
+        return renderer
+    }
+
     //MARK: - JSON decoder
     func performRequest(url: String){
         print(url)
@@ -173,7 +226,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
 //MARK: - TextFieldDelegate
 extension ViewController: UITextFieldDelegate {
-    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         searchTextField.endEditing(true)
