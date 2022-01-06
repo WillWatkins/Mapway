@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		371FD52C27875DC000178F42 /* change-map-style.gif in Resources */ = {isa = PBXBuildFile; fileRef = 371FD52B27875DC000178F42 /* change-map-style.gif */; };
-		371FD52E27875DCB00178F42 /* search-map.gif in Resources */ = {isa = PBXBuildFile; fileRef = 371FD52D27875DCB00178F42 /* search-map.gif */; };
 		CDBF0B152366EA5500FD59AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBF0B142366EA5500FD59AB /* AppDelegate.swift */; };
 		CDBF0B172366EA5500FD59AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBF0B162366EA5500FD59AB /* SceneDelegate.swift */; };
 		CDBF0B192366EA5500FD59AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBF0B182366EA5500FD59AB /* ViewController.swift */; };
@@ -39,8 +37,6 @@
 
 /* Begin PBXFileReference section */
 		009B837217F1A8A6A1183928 /* Pods-Maps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maps.release.xcconfig"; path = "Target Support Files/Pods-Maps/Pods-Maps.release.xcconfig"; sourceTree = "<group>"; };
-		371FD52B27875DC000178F42 /* change-map-style.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "change-map-style.gif"; path = "../../../../Downloads/change-map-style.gif"; sourceTree = "<group>"; };
-		371FD52D27875DCB00178F42 /* search-map.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "search-map.gif"; path = "../../../../Downloads/search-map.gif"; sourceTree = "<group>"; };
 		A296D78766538522C46CB483 /* Pods_Maps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Maps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43FA8EBCF93C9C5F7DFDAAF /* Pods-Maps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maps.debug.xcconfig"; path = "Target Support Files/Pods-Maps/Pods-Maps.debug.xcconfig"; sourceTree = "<group>"; };
 		CDBF0B112366EA5500FD59AB /* Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maps.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,15 +81,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		371FD52A27875DAE00178F42 /* gifs */ = {
-			isa = PBXGroup;
-			children = (
-				371FD52D27875DCB00178F42 /* search-map.gif */,
-				371FD52B27875DC000178F42 /* change-map-style.gif */,
-			);
-			path = gifs;
-			sourceTree = "<group>";
-		};
 		7EAB0F3FA894EAD1CD5E20C1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +101,6 @@
 		CDBF0B082366EA5500FD59AB = {
 			isa = PBXGroup;
 			children = (
-				371FD52A27875DAE00178F42 /* gifs */,
 				CDBF0B132366EA5500FD59AB /* Maps */,
 				CDBF0B2A2366EA5700FD59AB /* MapsTests */,
 				CDBF0B352366EA5700FD59AB /* MapsUITests */,
@@ -274,9 +260,7 @@
 			files = (
 				CDBF0B212366EA5700FD59AB /* LaunchScreen.storyboard in Resources */,
 				CDBF0B1E2366EA5700FD59AB /* Assets.xcassets in Resources */,
-				371FD52E27875DCB00178F42 /* search-map.gif in Resources */,
 				CDBF0B1C2366EA5500FD59AB /* Main.storyboard in Resources */,
-				371FD52C27875DC000178F42 /* change-map-style.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
