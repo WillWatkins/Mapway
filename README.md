@@ -2,7 +2,7 @@
 
 ## Description
 
-This app allows users to search for nearby local attractions and provides the shortest route to the destination.
+This app allows users to search for nearby local attractions and provides the shortest route to the destination. This app was created during my week placement at Mapway.
 
 # Technologies and Packages
 
